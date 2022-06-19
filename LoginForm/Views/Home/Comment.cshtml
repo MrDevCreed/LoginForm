@@ -1,0 +1,39 @@
+﻿@model LoginForm.ViewModels.CreateCommentInputViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comments</title>
+</head>
+<body>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <div style="height: 400px; overflow-y: auto; display: inline-block;width:351px;">
+        @if (Model != null)
+        {
+            @foreach (var item in Model.CommentViewModels)
+            {
+                <div style="border: 2px solid darkgrey; border-radius: 5px;margin-top:15px;margin-right:13px;word-wrap:break-word;">
+                    <div style="margin:15px;">
+                        @item.Titel
+                        <br />
+                        @item.Text
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <form asp-action="CreateComment" asp-controller="Home" method="post" style="position: relative;top:10px;">
+        <input asp-for="Comment.Titel" placeholder="Titel" style="width:74px;" />
+        <input asp-for="Comment.Text" placeholder="Comment Text" />
+        <input class="btn btn-success" type="submit" value="Send" style="width:62px;height:31px;margin-top:-5px;text-align:center;font-weight:700;line-height:1;" />
+        @*<span asp-validation-for="Comment.Text"></span>*@
+        <div>@ViewBag.Message</div>
+    </form>
+</body>
+</html>
