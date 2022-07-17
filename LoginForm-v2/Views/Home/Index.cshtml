@@ -1,0 +1,49 @@
+﻿@model LoginForm.ViewModels.AccountViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+    p {
+        margin-bottom: 0px;
+    }
+
+    .d-block {
+       
+    }
+
+        .d-block:focus {
+            outline: none;
+        }
+
+    p {
+        margin-bottom: 0px;
+        display: inline;
+        font-size: 21px;
+    }
+    </style>
+</head>
+<body>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <form asp-action="Login" asp-controller="Home" method="post">
+        <p style="margin-left: 13%;color: blue;font-weight: 900;">Login </p><p>Your Account</p>
+        <input asp-for="UserName" class="d-block" placeholder="UserName" /> <span asp-validation-for="UserName"></span>
+        <input asp-for="Password" class="d-block" placeholder="Password" /> <span asp-validation-for="Password"></span>
+        <input asp-for="FirstName" class="d-block" placeholder="FirstName" /> <span asp-validation-for="FirstName"></span>
+        <input asp-for="LastName" class="d-block" placeholder="LastName" /> <span asp-validation-for="LastName"></span>
+        <input asp-for="Email" class="d-block" placeholder="Email" /> <span asp-validation-for="Email"></span>
+        <input asp-for="Phone" class="d-block" placeholder="Phone" /> <span asp-validation-for="Phone"></span>
+        <input class="btn btn-success" type="submit" value="Login" />
+        <br />
+        <span>@ViewBag.Message</span>
+    </form>
+</body>
+</html>

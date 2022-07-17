@@ -1,0 +1,52 @@
+﻿@model LoginForm.ViewModels.CreateCommentInputViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comments</title>
+</head>
+<body>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <div style="height: 400px; overflow-y: auto; display: inline-block;width:351px;">
+        @if (Model != null)
+        {
+            @foreach (var item in Model.CommentViewModels)
+            {
+                <div style="border: 2px solid darkgrey; border-radius: 5px;margin-top:15px;margin-right:13px;word-wrap:break-word;">
+                    <div style="margin:15px;">
+                        <span style="font-family:mono;">@item.From.UserName</span>
+                        <hr />
+                        <span>@item.Title</span>
+                        <br />
+                        <span>@item.Text</span>
+                        <br />
+                        <span style="margin-left: 57%; font-size: 12px;">@item.CreatedAt</span>
+                        <hr />
+                        <span>Email : @item.From.Email</span>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <form asp-action="CreateComment" asp-controller="Home" method="post" style="position: relative;top:10px;">
+        <input asp-for="Comment.Title" placeholder="Title" style="width:74px;" />
+        <input asp-for="Comment.Text" placeholder="Comment Text" />
+        <input class="btn btn-success" type="submit" value="Send" style="width:62px;height:31px;margin-top:-5px;text-align:center;font-weight:700;line-height:1;" />
+        <span asp-validation-for="Comment.Text"></span>
+        <div>@ViewBag.Message</div>
+    </form>
+    <br />
+    @if (User.Claims.Where(P => P.Type == "UserName").Any())
+    {
+        <form asp-action="ExitAccount">
+            <input type="submit" value="Exit of Account" class="btn btn-danger" />
+        </form>
+    }
+</body>
+</html>

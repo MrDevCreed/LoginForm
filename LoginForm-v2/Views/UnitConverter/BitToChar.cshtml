@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Char to Bit</title>
+</head>
+<body>
+    <form method="post" asp-action="BitToChar">
+        Bit : <input type="text" placeholder="Enter Bit" name="Bit" />
+        <br /><br />
+        Byte : <input type="text" placeholder="Enter Byte" name="Byte" />
+        <br />
+        <br />
+        <input type="submit" value="Convert" class="btn btn-primary" />
+    </form>
+    <br />
+    <br />
+    Bit String : <input type="text" value="@ViewBag.Bit" contenteditable="false" />
+    Byte String : <input type="text" value="@ViewBag.Byte" contenteditable="false" />
+</body>
+</html>
