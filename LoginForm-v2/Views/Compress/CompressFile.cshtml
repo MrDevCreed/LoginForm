@@ -1,0 +1,14 @@
+﻿@model LoginForm.ViewModels.CompressFileViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compresser</title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post" asp-action="CompressFile">
+        <input type="file" asp-for="UploadFile" class="form-control-file"/>
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</body>
+</html>
